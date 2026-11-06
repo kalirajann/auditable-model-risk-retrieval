@@ -1,0 +1,40 @@
+{
+  "dataset_name": "Auditable Model Risk Evidence Benchmark",
+  "version": "1.0.0",
+  "generated_by": "build_dataset.py",
+  "files": {
+    "data/documents.jsonl": {
+      "sha256": "382abfb15849651cb5fa881be653520115b1f8d7074fb2e3edc82a76b7f2a255",
+      "bytes": 67207
+    },
+    "data/questions.jsonl": {
+      "sha256": "16768140b131f9fb50c1a0da65d48a0ac7a1e88c49b14a08c75df6a11d58f852",
+      "bytes": 61783
+    },
+    "data/facts.json": {
+      "sha256": "aa674a0ed3d9a38b1e02241b965770799ebb8ae79b795238f74185d6392c8293",
+      "bytes": 7264
+    },
+    "data/source_registry.json": {
+      "sha256": "c0d41178b2448eff634fab3ef85d8fbeddaf245801b8664d2c8675cabd29b1ac",
+      "bytes": 1670
+    },
+    "data/validation_report.json": {
+      "sha256": "19be328c05be924de8815f56606cad82e52ca06554189ecd2ae2964347fc51ba",
+      "bytes": 499
+    },
+    "data/splits/questions_train.jsonl": {
+      "sha256": "53b1c6297e31cedf3792029628ccaac78495eeaf3f6be98303cebd4259316dd3",
+      "bytes": 29667
+    },
+    "data/splits/questions_development.jsonl": {
+      "sha256": "7bc886b502943025c4efd2ee2fd2918ff1cfa3a653872c2e7ecbaeb7b0c098cd",
+      "bytes": 16000
+    },
+    "data/splits/questions_test.jsonl": {
+      "sha256": "a03807646c81831a3c712f2733647feae908621ae7ec2c60f328f3a449e62c1e",
+      "bytes": 16116
+    }
+  },
+  "corpus_document_count": 72
+}

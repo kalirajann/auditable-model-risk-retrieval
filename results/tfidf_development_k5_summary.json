@@ -1,0 +1,43 @@
+{
+  "experiment_name": "week3_retrieval_baseline",
+  "dataset_version": "1.0.0",
+  "retriever": "tfidf_cosine",
+  "embedding_model": null,
+  "reader_model": null,
+  "split": "development",
+  "top_k": 5,
+  "question_count": 30,
+  "elapsed_seconds": 0.0009,
+  "average_seconds_per_question": 3.1e-05,
+  "metrics": {
+    "hit_rate_at_5": 1.0,
+    "recall_at_5": 0.958333,
+    "precision_at_5": 0.283333,
+    "mean_reciprocal_rank": 0.617361,
+    "answerable_questions": 24,
+    "unanswerable_questions_excluded_from_retrieval_metrics": 6,
+    "by_category": {
+      "direct_retrieval": {
+        "questions": 6,
+        "hit_rate_at_5": 1.0
+      },
+      "cross_document_synthesis": {
+        "questions": 6,
+        "hit_rate_at_5": 1.0
+      },
+      "temporal_update": {
+        "questions": 6,
+        "hit_rate_at_5": 1.0
+      },
+      "conflicting_evidence": {
+        "questions": 6,
+        "hit_rate_at_5": 1.0
+      },
+      "unanswerable_abstention": {
+        "questions": 6,
+        "hit_rate_at_5": null
+      }
+    }
+  },
+  "test_set_accessed": false
+}

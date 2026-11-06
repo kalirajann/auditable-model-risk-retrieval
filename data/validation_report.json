@@ -1,0 +1,28 @@
+{
+  "valid": true,
+  "errors": [],
+  "counts": {
+    "documents": 72,
+    "questions": 120,
+    "categories": {
+      "direct_retrieval": 24,
+      "cross_document_synthesis": 24,
+      "temporal_update": 24,
+      "conflicting_evidence": 24,
+      "unanswerable_abstention": 24
+    },
+    "models": {
+      "RCD": 20,
+      "CTF": 20,
+      "AML": 20,
+      "MDP": 20,
+      "LST": 20,
+      "MVR": 20
+    },
+    "splits": {
+      "train": 60,
+      "development": 30,
+      "test": 30
+    }
+  }
+}

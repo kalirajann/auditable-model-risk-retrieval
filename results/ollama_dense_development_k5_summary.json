@@ -1,0 +1,43 @@
+{
+  "experiment_name": "week3_retrieval_baseline",
+  "dataset_version": "1.0.0",
+  "retriever": "ollama_embedding_cosine",
+  "embedding_model": "nomic-embed-text",
+  "reader_model": null,
+  "split": "development",
+  "top_k": 5,
+  "question_count": 30,
+  "elapsed_seconds": 0.2434,
+  "average_seconds_per_question": 0.008113,
+  "metrics": {
+    "hit_rate_at_5": 1.0,
+    "recall_at_5": 1.0,
+    "precision_at_5": 0.3,
+    "mean_reciprocal_rank": 0.8125,
+    "answerable_questions": 24,
+    "unanswerable_questions_excluded_from_retrieval_metrics": 6,
+    "by_category": {
+      "direct_retrieval": {
+        "questions": 6,
+        "hit_rate_at_5": 1.0
+      },
+      "cross_document_synthesis": {
+        "questions": 6,
+        "hit_rate_at_5": 1.0
+      },
+      "temporal_update": {
+        "questions": 6,
+        "hit_rate_at_5": 1.0
+      },
+      "conflicting_evidence": {
+        "questions": 6,
+        "hit_rate_at_5": 1.0
+      },
+      "unanswerable_abstention": {
+        "questions": 6,
+        "hit_rate_at_5": null
+      }
+    }
+  },
+  "test_set_accessed": false
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "source_id": "FRB-SR-26-2",
+    "title": "Revised Guidance on Model Risk Management",
+    "issuer": "Board of Governors of the Federal Reserve System",
+    "date": "2026-04-17",
+    "status": "current",
+    "url": "https://www.federalreserve.gov/supervisionreg/srletters/SR2602.htm",
+    "note": "Supersedes SR 11-7 and SR 21-8; used as current conceptual guidance, not copied into the synthetic corpus."
+  },
+  {
+    "source_id": "OCC-2026-13",
+    "title": "Model Risk Management: Revised Guidance",
+    "issuer": "Office of the Comptroller of the Currency",
+    "date": "2026-04-17",
+    "status": "current",
+    "url": "https://www.occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-13.html",
+    "note": "Current OCC bulletin transmitting the revised interagency guidance."
+  },
+  {
+    "source_id": "FRB-SR-11-7",
+    "title": "Supervisory Guidance on Model Risk Management",
+    "issuer": "Board of Governors of the Federal Reserve System and Office of the Comptroller of the Currency",
+    "date": "2011-04-04",
+    "status": "superseded",
+    "url": "https://www.federalreserve.gov/boarddocs/srletters/2011/sr1107a1.pdf",
+    "note": "Historical source only; superseded on 2026-04-17 by revised interagency guidance."
+  },
+  {
+    "source_id": "NIST-AI-100-1",
+    "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+    "issuer": "National Institute of Standards and Technology",
+    "date": "2023-01-26",
+    "status": "current",
+    "url": "https://doi.org/10.6028/NIST.AI.100-1",
+    "note": "General AI risk-management reference for validity, reliability, transparency, privacy, security, and accountability."
+  }
+]

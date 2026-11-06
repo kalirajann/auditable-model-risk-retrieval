@@ -1,0 +1,24 @@
+{
+  "experiment_name": "week3_retrieval_baseline",
+  "dataset_version": "1.0.0",
+  "evaluation_split": "development",
+  "top_k": 5,
+  "local_retriever": "tfidf_cosine",
+  "embedding_model": "nomic-embed-text",
+  "reader_model": "qwen3.5:9b-q4_K_M",
+  "ollama_base_url": "http://127.0.0.1:11434",
+  "reader_think": false,
+  "reader_temperature": 0,
+  "reader_seed": 699,
+  "use_model_name_as_query_context": true,
+  "baseline_exclusions": [
+    "hybrid_lexical_dense_fusion",
+    "hybrid_score_fusion",
+    "temporal_weighting",
+    "document_status_weighting",
+    "source_authority_weighting",
+    "learned_reranking",
+    "Optuna_tuning",
+    "SHAP_explanations"
+  ]
+}

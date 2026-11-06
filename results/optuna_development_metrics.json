@@ -1,0 +1,30 @@
+{
+  "hit_rate_at_5": 1.0,
+  "recall_at_5": 0.979167,
+  "precision_at_5": 0.291667,
+  "mean_reciprocal_rank": 0.958333,
+  "answerable_questions": 24,
+  "unanswerable_questions_excluded_from_retrieval_metrics": 6,
+  "by_category": {
+    "direct_retrieval": {
+      "questions": 6,
+      "hit_rate_at_5": 1.0
+    },
+    "cross_document_synthesis": {
+      "questions": 6,
+      "hit_rate_at_5": 1.0
+    },
+    "temporal_update": {
+      "questions": 6,
+      "hit_rate_at_5": 1.0
+    },
+    "conflicting_evidence": {
+      "questions": 6,
+      "hit_rate_at_5": 1.0
+    },
+    "unanswerable_abstention": {
+      "questions": 6,
+      "hit_rate_at_5": null
+    }
+  }
+}

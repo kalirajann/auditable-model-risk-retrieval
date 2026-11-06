@@ -1,0 +1,12 @@
+feature,mean_absolute_shap
+token_overlap,0.2069573406656741
+dense_similarity,0.1301612318321191
+lexical_similarity,0.10401163895760392
+effective_on_question_date,0.04746515888301918
+model_id_match,0.010392550557148647
+recency_score,0.008438436013979646
+document_length_log,0.008386449052693458
+authority_score,0.0002318465553605809
+current_document,4.946001291771631e-05
+superseded_document,0.0
+approved_document,0.0

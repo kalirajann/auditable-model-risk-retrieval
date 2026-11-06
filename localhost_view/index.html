@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MSAI-699 Local Model Results</title>
+  <style>
+    :root { --navy:#17324d; --blue:#2563eb; --green:#059669; --ink:#172033; --muted:#64748b; --line:#dbe3ec; --paper:#f5f7fa; }
+    * { box-sizing:border-box; }
+    body { margin:0; font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--ink); background:var(--paper); }
+    header { background:linear-gradient(135deg,var(--navy),#24557b); color:white; padding:46px 24px; }
+    header div, main { max-width:1120px; margin:auto; }
+    h1 { margin:0 0 8px; font-size:clamp(2rem,4vw,3.25rem); line-height:1.1; }
+    h2 { margin-top:0; color:var(--navy); }
+    .sub { margin:0; color:#d7e6f3; font-size:1.08rem; }
+    main { padding:32px 20px 64px; }
+    .notice { border-left:5px solid var(--green); background:#ecfdf5; padding:14px 18px; border-radius:8px; margin-bottom:24px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:16px; margin:22px 0 32px; }
+    .card, section { background:white; border:1px solid var(--line); border-radius:14px; box-shadow:0 5px 18px rgba(23,50,77,.06); }
+    .card { padding:20px; }
+    .metric { font-size:2rem; font-weight:750; color:var(--blue); }
+    .label { color:var(--muted); }
+    section { padding:24px; margin:22px 0; }
+    table { border-collapse:collapse; width:100%; overflow:hidden; }
+    th,td { padding:12px 10px; border-bottom:1px solid var(--line); text-align:right; }
+    th:first-child,td:first-child { text-align:left; }
+    th { background:#eef3f8; color:var(--navy); }
+    .best { font-weight:750; color:var(--green); }
+    img { width:100%; height:auto; border:1px solid var(--line); border-radius:10px; margin-top:12px; }
+    .two { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px; }
+    ol { padding-left:22px; }
+    code { background:#eef3f8; padding:2px 6px; border-radius:5px; }
+    a { color:var(--blue); }
+    footer { color:var(--muted); text-align:center; margin-top:34px; }
+  </style>
+</head>
+<body>
+  <header><div>
+    <h1>Auditable Model-Risk Retrieval</h1>
+    <p class="sub">MSAI-699 · Local Ollama baseline, Optuna tuning, and SHAP explainability</p>
+  </div></header>
+  <main>
+    <div class="notice"><strong>Execution status:</strong> Five notebooks completed with zero cell errors. The frozen test split was not accessed.</div>
+
+    <div class="grid">
+      <div class="card"><div class="metric">72</div><div class="label">Synthetic governance documents</div></div>
+      <div class="card"><div class="metric">120</div><div class="label">Benchmark questions</div></div>
+      <div class="card"><div class="metric">0.9583</div><div class="label">Tuned development MRR</div></div>
+      <div class="card"><div class="metric">1.0000</div><div class="label">Reader abstention accuracy</div></div>
+    </div>
+
+    <section>
+      <h2>Local model architecture</h2>
+      <p><code>nomic-embed-text</code> produces 768-dimensional retrieval vectors. <code>qwen3.5:9b-q4_K_M</code> generates evidence-grounded answers locally. A random-forest ranker combines semantic, lexical, temporal, status, approval, authority, and recency features; Optuna tunes it and SHAP explains its scores.</p>
+    </section>
+
+    <section>
+      <h2>Development-set retrieval results</h2>
+      <table>
+        <thead><tr><th>System</th><th>Hit@5</th><th>Recall@5</th><th>Precision@5</th><th>MRR</th></tr></thead>
+        <tbody>
+          <tr><td>TF-IDF cosine</td><td>1.0000</td><td>0.9583</td><td>0.2833</td><td>0.6174</td></tr>
+          <tr><td>Nomic dense cosine</td><td>1.0000</td><td class="best">1.0000</td><td class="best">0.3000</td><td>0.8125</td></tr>
+          <tr><td>Optuna-tuned ranker</td><td>1.0000</td><td>0.9792</td><td>0.2917</td><td class="best">0.9583</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Honest tradeoff:</strong> the tuned ranker improves first-relevant-document placement substantially, but dense retrieval retains slightly higher Recall@5 and Precision@5.</p>
+      <img src="../results/figures/all_model_comparison.png" alt="Bar chart comparing retrieval models">
+    </section>
+
+    <div class="two">
+      <section>
+        <h2>Reader evaluation</h2>
+        <ul>
+          <li>Abstention accuracy: <strong>1.0000</strong></li>
+          <li>Citation hit rate: <strong>0.9583</strong></li>
+          <li>Grounded-citation rate: <strong>1.0000</strong></li>
+          <li>Average latency: <strong>2.45 seconds</strong></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Optuna result</h2>
+        <ul>
+          <li>25 seeded trials</li>
+          <li>220 trees</li>
+          <li>Maximum depth: 3</li>
+          <li>Minimum leaf size: 5</li>
+          <li>Balanced subsample weighting</li>
+        </ul>
+      </section>
+    </div>
+
+    <section>
+      <h2>What SHAP found</h2>
+      <p>The five most influential ranking signals were token overlap, dense similarity, lexical similarity, effective-date applicability, and model-family match. SHAP explains the feature-based ranker—not Qwen's internal token generation.</p>
+      <img src="../results/figures/shap_summary.png" alt="SHAP beeswarm summary for the tuned ranker">
+    </section>
+
+    <section>
+      <h2>Executed notebook sequence</h2>
+      <ol>
+        <li><a href="../notebooks/01_dataset_validation_eda.ipynb">Dataset validation and EDA</a></li>
+        <li><a href="../notebooks/02_local_dense_retrieval_baseline.ipynb">Local dense-retrieval baseline</a></li>
+        <li><a href="../notebooks/03_local_grounded_reader.ipynb">Local grounded reader</a></li>
+        <li><a href="../notebooks/04_optuna_feature_ranker.ipynb">Optuna feature ranker</a></li>
+        <li><a href="../notebooks/05_shap_explainability_comparison.ipynb">SHAP and model comparison</a></li>
+      </ol>
+    </section>
+    <footer>Development results only · AMREB v1.0.0 · Kalirajan Natarajan</footer>
+  </main>
+</body>
+</html>

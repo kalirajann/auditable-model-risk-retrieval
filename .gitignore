@@ -1,0 +1,15 @@
+.secrets/
+.venv/
+.uv-cache/
+__pycache__/
+.ipynb_checkpoints/
+results/cache/
+tmp/
+output/
+*.pyc
+.DS_Store
+notebooks/01_week3_baseline_model.ipynb
+notebooks/01_week3_baseline_model_executed.ipynb
+localhost_view/week3_baseline_results.html
+create_week3_report.py
+

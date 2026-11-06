@@ -1,0 +1,28 @@
+{
+  "explanation_method": "SHAP TreeExplainer",
+  "explained_component": "feature-based document ranker",
+  "sample_rows": 500,
+  "top_features": [
+    {
+      "feature": "token_overlap",
+      "mean_absolute_shap": 0.2069573406656741
+    },
+    {
+      "feature": "dense_similarity",
+      "mean_absolute_shap": 0.1301612318321191
+    },
+    {
+      "feature": "lexical_similarity",
+      "mean_absolute_shap": 0.10401163895760392
+    },
+    {
+      "feature": "effective_on_question_date",
+      "mean_absolute_shap": 0.04746515888301918
+    },
+    {
+      "feature": "model_id_match",
+      "mean_absolute_shap": 0.010392550557148647
+    }
+  ],
+  "test_set_accessed": false
+}
