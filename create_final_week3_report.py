@@ -14,6 +14,7 @@ from docx.shared import Inches, Pt
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "deliverables" / "MSAI699_Week3_Model_Selection_Tuning_Explainability_Kalirajan_Natarajan.docx"
 FIG = ROOT / "results" / "figures"
+REPOSITORY_URL = "https://github.com/kalirajann/auditable-model-risk-retrieval"
 
 
 def page_number(paragraph):
@@ -27,6 +28,28 @@ def page_number(paragraph):
     end = OxmlElement("w:fldChar")
     end.set(qn("w:fldCharType"), "end")
     run._r.extend([begin, text, end])
+
+
+def hyperlink(paragraph, text, url):
+    relationship = paragraph.part.relate_to(
+        url,
+        "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
+        is_external=True,
+    )
+    link = OxmlElement("w:hyperlink")
+    link.set(qn("r:id"), relationship)
+    run = OxmlElement("w:r")
+    properties = OxmlElement("w:rPr")
+    color = OxmlElement("w:color")
+    color.set(qn("w:val"), "0563C1")
+    underline = OxmlElement("w:u")
+    underline.set(qn("w:val"), "single")
+    properties.extend([color, underline])
+    value = OxmlElement("w:t")
+    value.text = text
+    run.extend([properties, value])
+    link.append(run)
+    paragraph._p.append(link)
 
 
 def set_cell_shading(cell, fill):
@@ -225,6 +248,12 @@ for line in (
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.line_spacing = 2
     p.add_run(line)
+p = doc.add_paragraph()
+p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+p.paragraph_format.line_spacing = 2
+r = p.add_run("Public project repository:\n")
+r.bold = True
+hyperlink(p, REPOSITORY_URL, REPOSITORY_URL)
 
 doc.add_page_break()
 
